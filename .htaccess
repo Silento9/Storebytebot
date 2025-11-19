@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+# Agar request koi asli file ya folder nahi hai...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# ...to use index.php par bhej do
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Security: Folder listing band karne ke liye (Optional)
+Options -Indexes
